@@ -1,0 +1,107 @@
+.stripes {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  padding: 0;
+  z-index: 4;
+}
+
+@media screen and (max-width: 924px) {
+  .stripes {
+    display: block;
+  }
+
+  .stripes span {
+    position: absolute;
+    left: 10px;
+    width: 28px;
+    height: 3px;
+    background-color: white;;
+    transition: background-color .5s, opacity .25s, transform .5s;
+    will-change: transform;
+  }
+
+  .stripes span:nth-child(1) {
+    top: 7px;
+  }
+
+  .stripes span:nth-child(2) {
+    top: 17px;
+  }
+
+  .stripes span:nth-child(3) {
+    top: 27px;
+  }
+
+  .header.opened .stripes {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    top: 3px;
+  }
+
+  .header.opened .stripes span {
+    width: 22px;
+    left: 0;
+    top: 10px;
+  }
+
+  .header.opened .stripes span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .header.opened .stripes span:nth-child(2) {
+    transform: scale(0);
+  }
+
+  .header.opened .stripes span:nth-child(3) {
+    transform: rotate(-45deg);  
+  }
+
+  .stripes_fixed {
+    position: fixed;
+    bottom: 29.16px;
+    right: 0px;
+    margin-top: 29.16px;
+    margin-right: 29.16px;
+  } 
+}
+
+@media screen and (max-width: 600px) {
+  .stripes {
+    width: 43px;
+    height: 43px;
+    padding: 0;
+  }
+
+  .stripes span {
+    left: 12px;
+    width: 22px;
+    height: 2.5px;
+  }
+
+  .stripes span:nth-child(1) {
+    top: 8px;
+  }
+
+  .stripes span:nth-child(2) {
+    top: 17px;
+  }
+
+  .stripes span:nth-child(3) {
+    top: 26px;
+  }
+
+  .header.opened .stripes {
+    top: -11px;
+    margin-right: 0;
+    right: 19px;
+  }
+
+  .header.opened .stripes span {
+    left: 0;
+    top: 10px;
+  }
+}

@@ -1,0 +1,187 @@
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 44px;
+}
+
+.menu__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.menu__link {
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  color: white;
+  margin: auto;
+}
+
+.menu__link_margin-left {
+  margin-left: 18px;
+}
+
+.active {
+  font-weight: 500;
+}
+
+.menu__avatar-container {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: #313131;
+  box-sizing: border-box;
+  display: flex;
+  margin-left: 17px;
+}
+
+.menu__avatar {
+  width: 10.38px;
+  height: 10.66px;
+  align-self: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.menu__blur {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.3;
+  transition: display 0.5s;
+  will-change: transform;
+}
+
+.menu__cross-button {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  border: none;
+  padding: 0;
+  background-image: url(../../images/Cross.svg);
+  background-color: transparent;
+  background-size: 32px 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+
+.menu__link_hidden {
+  display: none;
+}
+
+@media screen and (max-width: 924px) {
+  .menu {
+    visibility: hidden;
+    padding-bottom: 0px;
+    right: 0;
+    top: 0;
+    width: 520px;
+    height: 100%;
+    background-color: #202020;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 137px 90px 86px 92px;
+    z-index: 3;
+    position: fixed;
+  }
+
+  .menu__blur {
+    position: fixed;
+  }
+
+  .header.opened .menu {
+    visibility: visible;
+  }
+
+  .header.opened .menu__blur {
+    display: block;
+  }
+
+  .menu__link-span {
+    display: block;
+  }
+
+  .menu__list-movies {
+    display: block;
+    text-align: center;
+  }
+
+  .menu__list:last-child {
+    margin-top: auto;
+  }
+
+  .menu__link {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+  }
+
+  .menu__link_films {
+    text-decoration: underline;
+  }
+
+  .menu__link_avatar {
+    font-size: 14px;
+  }
+
+  .menu__link-movies {
+    margin-top: 28px;
+  }
+
+  .menu__avatar {
+    width: 11.5px;
+    height: 14px;
+  }
+
+  .menu__avatar-container {
+    width: 26px;
+    height: 30px;
+  }
+
+  .menu__link_hidden {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+    width: 100%;
+    padding: 120px 10px 0px 0px;
+  }
+
+  .menu__list {
+    margin-right: 10px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+  }
+
+  .menu__list-movies {
+    min-height: 110px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    margin-top: 26px;
+  }
+
+  .menu__link-movies {
+    margin-top: 0;
+  }
+}

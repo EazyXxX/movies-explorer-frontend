@@ -1,0 +1,139 @@
+.popup {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  visibility: hidden;
+  z-index: 1;
+  opacity: 0;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.popup__window {
+  background: #ffffff;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  width: 430px;
+  border-radius: 10px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+  cursor: default;
+}
+
+@media screen and (max-width: 770px) {
+  .popup__window {
+    width: 282px;
+  }
+}
+
+.popup__union-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup__union {
+  max-width: 120px;
+  max-height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  margin-bottom: auto;
+}
+
+.popup__header {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  margin-top: 0;
+  margin-left: 36px;
+  margin-right: 64px;
+  max-width: 330px;
+  margin-bottom: 0;
+  padding-top: 34px;
+  padding-bottom: 17px;
+}
+
+@media screen and (max-width: 770px) {
+  .popup__header {
+    font-size: 18px;
+    line-height: 22px;
+    max-width: 238px;
+    margin-left: 23px;
+    margin-right: auto;
+    padding-top: 25px;
+    padding-bottom: 44px;
+  }
+}
+
+.popup__union-header {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 60px;
+  padding-top: 32px;
+  padding-bottom: 0px;
+}
+
+.popup__cross-button {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  border: none;
+  padding: 0;
+  background-image: url(../../images/Cross.svg);
+  background-color: transparent;
+  background-size: 32px 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+
+.popup__cross-button:hover {
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+@media screen and (max-width: 770px) {
+  .popup__cross-button {
+    max-width: 20px;
+    max-height: 20px;
+    right: 0;
+    top: -34px;
+    background-size: 20px 20px;
+  }
+}
+
+.popup__cross-button_type_picture {
+  top: -40px;
+  right: -40px;
+}
+
+@media screen and (max-width: 320px) {
+  .popup__cross-button_type_picture {
+    top: -36px;
+    right: 0;
+  }
+}
+
+.popup_opened {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+  position: fixed;
+}
