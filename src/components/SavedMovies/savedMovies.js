@@ -2,12 +2,14 @@ import React from "react";
 import Filter from "../Filter/filter";
 import MoviesCardList from "../MoviesCardList/cards";
 
-function SavedMovies() {
+function SavedMovies({ state }) {
   return (
-    <div className="movies">
+    <section className="movies">
+      <main>
       <Filter />
-      <MoviesCardList />
-    </div>
+      <MoviesCardList state={state} />
+      </main>
+    </section>
   );
 }
 

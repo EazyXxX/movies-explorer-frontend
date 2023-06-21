@@ -55,6 +55,8 @@
   grid-template-rows: 36px;
   text-align: center;
   vertical-align: middle;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .about__time-grid {
@@ -149,6 +151,7 @@
     padding-top: 9px;
     padding-bottom: 9px;
     color: #8b8b8b;
+    margin: 0;
   }
 
   .about__time-grid:first-of-type {

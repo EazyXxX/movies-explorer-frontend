@@ -1,7 +1,6 @@
 import React from "react";
 import arrow from "../../images/arrow.svg";
 import "./portfolio.css";
-import "../Animation/animation.css";
 import { Link } from "react-router-dom";
 
 function Portfolio() {
@@ -9,40 +8,36 @@ function Portfolio() {
     <section className="portfolio">
       <h2 className="portfolio__title">Портфолио</h2>
       <ul className="portfolio__list">
-        <li className="portfolio__element animation__link">
+        <li className="portfolio__box">
           <Link
-            to="https://github.com"
+            to="https://github.com/EazyXxX/how-to-learn"
             target="_blank"
-            className="portfolio__link"
+            className="portfolio__link portfolio__element"
           >
-            Статичный сайт
-          </Link>
-          <Link to="https://github.com" target="_blank">
+            <p className="portfolio__link-text">Статичный сайт</p>
             {" "}
             <img className="portfolio__icon" alt="Стрелка-ссылка" src={arrow} />
           </Link>
         </li>
-        <li className="portfolio__element animation__link">
+        <li className="portfolio__box">
           <Link
-            to="https://github.com"
+            to="https://github.com/EazyXxX/russian-travel"
             target="_blank"
-            className="portfolio__link"
+            className="portfolio__link portfolio__element"
           >
-            Адаптивный сайт
-          </Link>
-          <Link to="https://github.com" target="_blank">
+            <p className="portfolio__link-text">Адаптивный сайт</p>
+            {" "}
             <img className="portfolio__icon" alt="Стрелка-ссылка" src={arrow} />
           </Link>
         </li>
-        <li className="portfolio__element animation__link">
+        <li className="portfolio__box">
           <Link
-            to="https://github.com"
+            to="https://github.com/EazyXxX/react-mesto-api-full-gha"
             target="_blank"
-            className="portfolio__link"
+            className="portfolio__link portfolio__element"
           >
-            Одностраничное приложение
-          </Link>
-          <Link to="https://github.com" target="_blank">
+            <p className="portfolio__link-text">Одностраничное приложение</p>
+            {" "}
             <img className="portfolio__icon" alt="Стрелка-ссылка" src={arrow} />
           </Link>
         </li>

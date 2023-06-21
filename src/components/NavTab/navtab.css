@@ -17,6 +17,15 @@
   font-size: 12px;
   line-height: 16px;
   text-decoration: none;
+  background-color: transparent;
+  border: none;
+  opacity: 1;
+  transition: opacity 0.06s linear 0.1s;
+}
+
+.nav-menu__link:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .nav-menu__box {
@@ -27,6 +36,13 @@
   border-radius: 3px;
   display: flex;
   margin: 0 0 0 30px;
+  opacity: 1;
+  transition: opacity 0.06s linear 0.1s;
+}
+
+.nav-menu__box:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .nav-menu__link {
@@ -37,12 +53,19 @@
   color: white;
   align-items: center;
   font-weight: 100;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .nav-menu__text-button {
-  color: black;
+  color: white;
   margin: auto;
   font-weight: 100;
+  text-decoration: none;
+}
+
+.nav-menu__text-button_black {
+  color: black;
 }
 
 @media screen and (max-width: 400px) {

@@ -29,25 +29,43 @@
   text-decoration: none;
 }
 
+.empty__button {
+  background-color: transparent;
+  border: none;
+  opacity: 1;
+  transition: opacity 0.06s linear 0.1s;
+}
+
+.empty__button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 .empty__link:active {
   color: #3b6ec7;
 }
 
+@media screen and (max-width: 800px) {
+  .empty {
+    padding-top: 406px;
+  }  
+}
+
 @media screen and (max-width: 400px) {
   .empty {
+    padding-top: 328px;
     padding-bottom: 0;
   }
 
   .empty__title {
     font-size: 80px;
-    margin-top: 46px;
     margin-bottom: 0;
-    height: 97px;
+    line-height: 97px;
   }
 
   .empty__subtitle {
     font-size: 12px;
-    margin-top: 43px;
+    margin-top: 8px;
     margin-bottom: 280px;
   }
 

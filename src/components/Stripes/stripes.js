@@ -1,12 +1,11 @@
 import React from 'react';
 import './stripes.css';
-import '../Animation/animation.css';
 
 function Stripes({ handleStripesClick, isStripesMenuOpened }) {
   return (
-    <div onClick={handleStripesClick} className={`stripes animation__button ${isStripesMenuOpened? "stripes_fixed" : ""}`}>
-      <span /><span /><span />
-    </div>
+    <button type='button' onClick={handleStripesClick} className={`stripes ${isStripesMenuOpened? "stripes_fixed" : ""}`}>
+      <span className='stripes__span' /><span className='stripes__span'/><span className='stripes__span'/>
+    </button>
   );
 }
 

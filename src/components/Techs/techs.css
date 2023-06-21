@@ -1,6 +1,8 @@
 .techs {
   padding: 104px 70px 100px 70px;
   background-color: #272727;
+  margin-left: auto;
+  margin-right: a;
 }
 
 .techs__title {
@@ -133,12 +135,12 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 650px) {
   .techs {
-    max-width: 284px;
+    max-width: 100%;
     padding: 0;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 18px;
+    margin-right: 18px;
     background-color: #202020;
   }
 
@@ -178,7 +180,7 @@
 
   .techs__technologies {
     max-width: 178px;
-    height: 268px;
+    min-height: 268px;
     flex-wrap: wrap;
     justify-content: flex-start;
     flex-direction: inherit;

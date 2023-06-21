@@ -14,7 +14,7 @@
   display: grid;
   grid-template-columns: auto 31px;
   grid-template-rows: auto 0px;
-  width: 332px;
+  max-width: 332px;
   margin: 6px 0 0 17px;
   cursor: pointer;
 }
@@ -30,10 +30,17 @@
 .card__like-button {
   background-color: transparent;
   border: none;
-  margin: 0 0 0 0;
+  margin: 0 0 0 4px;
   padding: 0;
   width: 30px;
   height: 30px;
+  opacity: 1;
+  transition: opacity 0.06s linear 0.1s;
+}
+
+.card__like-button:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .card__timing {
@@ -46,10 +53,19 @@
 .card__image {
   max-width: 364px;
   max-height: 203px;
+  object-fit: cover;
+}
+
+.card__cross {
+  visibility: hidden;
+}
+
+.card:hover .card__cross {
+  visibility: visible;
 }
 
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1279px) {
   .card {
     max-width: 339px;
     height: 258px;
@@ -66,7 +82,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 740px) {
   .card {
     max-width: 300px;
     height: 237px;

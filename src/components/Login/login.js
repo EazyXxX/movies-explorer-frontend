@@ -1,36 +1,38 @@
 import "../Form/form.css";
 import React from "react";
-import "../Animation/animation.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 
 function Login() {
+  function handleInput(e) {}
+
   return (
-    <>
-      <div className="form">
-        <div className="form__box">
-          <Link to={'/'}>
-          <img
-            className="form__logo animation__button"
-            alt="Логотип - зелёная улыбающаяся минималистичная рожица"
-            src={logo}
-          />
+      <section className="form">
+        <main className="form__box">
+          <Link className="form__logo-link" to={"/"}>
+            <img
+              className="form__logo"
+              alt="Логотип - зелёная улыбающаяся минималистичная рожица"
+              src={logo}
+            />
           </Link>
           <h1 className="form__salute">Рады видеть!</h1>
 
-          <form className="form__form">
+          <form className="form__form" name="login">
             <ul className="form__label-container">
               <li>
                 <label className="form__label">
-                  <h3 className="form__header">E-mail</h3>
+                  <p className="form__header">E-mail</p>
                   <input
+                    onChange={handleInput}
                     className="form__input"
                     id="email"
                     name="email"
                     type="email"
                     minLength="2"
                     required
-                    value="pochta@yandex.ru|"
+                    value="pochta@yandex.ru"
+                    placeholder="E-mail"
                   />
                   <span className="form__error"></span>
                 </label>
@@ -38,15 +40,17 @@ function Login() {
 
               <li>
                 <label className="form__label">
-                  <h3 className="form__header">Пароль</h3>
+                  <p className="form__header">Пароль</p>
                   <input
-                    className="form__input form__input-error"
+                    onChange={handleInput}
+                    className="form__input"
                     id="password"
                     name="password"
                     type="password"
                     minLength="2"
                     maxLength="30"
                     required
+                    placeholder="Пароль"
                   />
                   <span className="form__error"></span>
                 </label>
@@ -54,7 +58,7 @@ function Login() {
             </ul>
 
             <button
-              className="form__button animation__button"
+              className="form__button"
               type="submit"
               aria-label="Кнопка войти"
             >
@@ -62,15 +66,14 @@ function Login() {
             </button>
             <h2 className="form__span">
               Ещё не зарегистрированы?
-              <Link className="form__link animation__link" to="/signup">
+              <Link className="form__link" to="/signup">
                 {" "}
                 Регистрация
               </Link>
             </h2>
           </form>
-        </div>
-      </div>
-    </>
+        </main>
+      </section>
   );
 }
 

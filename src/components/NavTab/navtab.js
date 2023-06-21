@@ -1,6 +1,5 @@
 import React from "react";
 import "./navtab.css";
-import "../Animation/animation.css";
 import { Link } from "react-router-dom";
 
 function NavTab() {
@@ -8,14 +7,21 @@ function NavTab() {
     <nav className="nav-menu">
       <ul className="nav-menu__list">
         <li>
-          <Link className="nav-menu__link animation__link" to="/signup">
-            Регистрация
-          </Link>
+          <button type="button" className="nav-menu__link">
+            <Link className="nav-menu__text-button" to="/signup">
+              Регистрация
+            </Link>
+          </button>
         </li>
-        <li className="nav-menu__box animation__button">
-          <Link className="nav-menu__link nav-menu__text-button" to="/signin">
-            Войти
-          </Link>
+        <li className="nav-menu__box">
+          <button
+            type="button"
+            className="nav-menu__link"
+          >
+            <Link className="nav-menu__text-button nav-menu__text-button_black" to="/signin">
+              Войти
+            </Link>
+          </button>
         </li>
       </ul>
     </nav>

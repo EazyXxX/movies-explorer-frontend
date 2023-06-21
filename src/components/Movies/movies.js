@@ -3,13 +3,15 @@ import Filter from "../Filter/filter";
 import MoviesCardList from "../MoviesCardList/cards";
 import Footer from "../Footer/footer";
 
-function Movies() {
+function Movies({ state }) {
   return (
-    <div className="movies">
+    <section className="movies">
+      <main>
       <Filter />
-      <MoviesCardList />
+      <MoviesCardList state={state} />
       <Footer />
-    </div>
+      </main>
+    </section>
   );
 }
 

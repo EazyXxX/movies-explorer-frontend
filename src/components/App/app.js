@@ -29,6 +29,7 @@ function App() {
                 state={true}
                 handleStripesClick={handleStripesClick}
                 isStripesMenuOpened={isStripesMenuOpened}
+                mainUnderline={true}
               />
               <Main />
               <Footer />
@@ -42,8 +43,9 @@ function App() {
               <Header
                 handleStripesClick={handleStripesClick}
                 isStripesMenuOpened={isStripesMenuOpened}
+                filmsUnderline = {true}
               />
-              <Movies />
+              <Movies state={true} />
             </>
           }
         ></Route>
@@ -52,11 +54,12 @@ function App() {
           element={
             <>
               <Header
-                state={true}
+                state={false}
                 handleStripesClick={handleStripesClick}
                 isStripesMenuOpened={isStripesMenuOpened}
+                savedFilmsUnderline={true}
               />
-              <SavedMovies />
+              <SavedMovies state={false} />
               <Footer />
             </>
           }
@@ -65,6 +68,11 @@ function App() {
           path="/profile"
           element={
             <>
+              <Header
+                handleStripesClick={handleStripesClick}
+                isStripesMenuOpened={isStripesMenuOpened}
+                profileUnderline={true}
+              />
               <Profile />
             </>
           }

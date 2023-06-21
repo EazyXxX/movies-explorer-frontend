@@ -6,6 +6,16 @@
   margin-left: auto;
   padding: 0;
   z-index: 4;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  opacity: 1;
+  transition: opacity 0.06s linear 0.1s;
+}
+
+.stripes:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 924px) {
@@ -13,7 +23,7 @@
     display: block;
   }
 
-  .stripes span {
+  .stripes__span {
     position: absolute;
     left: 10px;
     width: 28px;
@@ -23,15 +33,15 @@
     will-change: transform;
   }
 
-  .stripes span:nth-child(1) {
+  .stripes__span:nth-of-type(1) {
     top: 7px;
   }
 
-  .stripes span:nth-child(2) {
+  .stripes__span:nth-of-type(2) {
     top: 17px;
   }
 
-  .stripes span:nth-child(3) {
+  .stripes__span:nth-of-type(3) {
     top: 27px;
   }
 
@@ -42,21 +52,21 @@
     top: 3px;
   }
 
-  .header.opened .stripes span {
+  .header.opened .stripes__span {
     width: 22px;
     left: 0;
-    top: 10px;
+    top: 4px;
   }
 
-  .header.opened .stripes span:nth-child(1) {
+  .header.opened .stripes__span:nth-of-type(1) {
     transform: rotate(45deg);
   }
 
-  .header.opened .stripes span:nth-child(2) {
+  .header.opened .stripes__span:nth-of-type(2) {
     transform: scale(0);
   }
 
-  .header.opened .stripes span:nth-child(3) {
+  .header.opened .stripes__span:nth-of-type(3) {
     transform: rotate(-45deg);  
   }
 
@@ -76,21 +86,21 @@
     padding: 0;
   }
 
-  .stripes span {
+  .stripes__span {
     left: 12px;
     width: 22px;
     height: 2.5px;
   }
 
-  .stripes span:nth-child(1) {
-    top: 8px;
+  .stripes__span:nth-of-type(1) {
+    top: 6px;
   }
 
-  .stripes span:nth-child(2) {
+  .stripes__span:nth-of-type(2) {
     top: 17px;
   }
 
-  .stripes span:nth-child(3) {
+  .stripes__span:nth-of-type(3) {
     top: 26px;
   }
 
@@ -100,7 +110,7 @@
     right: 19px;
   }
 
-  .header.opened .stripes span {
+  .header.opened .stripes__span {
     left: 0;
     top: 10px;
   }

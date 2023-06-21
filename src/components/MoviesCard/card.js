@@ -3,9 +3,10 @@ import "./card.css";
 import like from "../../images/like.svg";
 import redLike from "../../images/redLike.svg";
 import cardImage from "../../images/cardImage.png";
-import "../Animation/animation.css";
+import littleCross from "../../images/littleCross.svg";
+import { Link } from "react-router-dom";
 
-function MoviesCard({ isActive }) {
+function MoviesCard({ isActive, filmName, filmLink, state }) {
   const [isLiked, setIsLiked] = useState(false);
 
   function handleLike() {
@@ -14,18 +15,33 @@ function MoviesCard({ isActive }) {
 
   return (
     <div className="card">
-      <img src={cardImage} className="card__image" alt="Кадр из фильма" />
+      <Link to={filmLink} target="_blank">
+        <img
+          src={cardImage}
+          className="card__image"
+          alt={`Кадр из фильма ${filmName} внутри карточки`}
+        />
+      </Link>
       <div className="card__sub-container">
-        <h4 className="card__name">33 слова о дизайне</h4>
+        <h2 className="card__name">{filmName}</h2>
         <button
-          className="card__like-button animation__button"
+          type="button"
+          className="card__like-button"
           onClick={handleLike}
         >
-          <img
-            src={isActive || isLiked ? redLike : like}
-            className="card__like"
-            alt="Иконка лайка"
-          ></img>
+          {state ? (
+            <img
+              src={isActive || isLiked ? redLike : like}
+              className="card__like"
+              alt="Иконка лайка"
+            ></img>
+          ) : (
+            <img
+              src={littleCross}
+              className="card__cross"
+              alt="Иконка крестика - чтобы удалить карточку из избранного"
+            ></img>
+          )}
         </button>
         <p className="card__timing">1ч 47м</p>
       </div>

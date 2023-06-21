@@ -1,6 +1,5 @@
 import React from "react";
 import "./footer.css";
-import "../Animation/animation.css";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -13,10 +12,10 @@ function Footer() {
       </div>
       <div className="footer__info">
         <p className="footer__year">
-          © <span>{new Date().getFullYear()}</span>
+          ©<span>{new Date().getFullYear()}</span>
         </p>
         <ul className="footer__list">
-          <li className="footer__element animation__link">
+          <li className="footer__element">
             <Link
               to="https://practicum.yandex.ru"
               target="_blank"
@@ -25,9 +24,9 @@ function Footer() {
               Яндекс.Практикум
             </Link>
           </li>
-          <li className="footer__element animation__link">
+          <li className="footer__element">
             <Link
-              to="https://github.com"
+              to="https://github.com/EazyXxX"
               target="_blank"
               className="footer__link"
             >

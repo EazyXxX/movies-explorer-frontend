@@ -1,33 +1,35 @@
 import React from "react";
 import logo from "../../images/logo.svg";
-import "../Animation/animation.css";
 import "../Form/form.css";
 import { Link } from "react-router-dom";
 
 function Register() {
+  function handleInput(e) {}
+
   return (
-    <div className="form">
-      <div className="form__box">
-        <Link className="form__link" to="/">
+    <section className="form">
+      <main className="form__box">
+        <Link className="form__logo-link" to="/">
           <img
-            className="form__logo animation__button"
+            className="form__logo"
             alt="Логотип - зелёная минималистичная рожица"
             src={logo}
           />
         </Link>
         <h1 className="form__salute">Добро пожаловать!</h1>
-
-        <form className="form__form">
+        <form className="form__form" name="registration">
           <ul className="form__label-container">
             <li>
               <label className="form__label">
-                <h3 className="form__header">Имя</h3>
+                <p className="form__header">Имя</p>
                 <input
+                  onChange={handleInput}
                   className="form__input"
                   id="name"
                   name="name"
                   type="name"
                   minLength="2"
+                  maxLength="20"
                   required
                   value="Виталий"
                 />
@@ -37,15 +39,17 @@ function Register() {
 
             <li>
               <label className="form__label">
-                <h3 className="form__header">E-mail</h3>
+                <p className="form__header">E-mail</p>
                 <input
+                  onChange={handleInput}
                   className="form__input"
                   id="email"
                   name="email"
                   type="email"
                   minLength="2"
                   required
-                  value="pochta@yandex.ru|"
+                  value="pochta@yandex.ru"
+                  placeholder="E-mail"
                 />
                 <span className="form__error"></span>
               </label>
@@ -53,8 +57,9 @@ function Register() {
 
             <li>
               <label className="form__label">
-                <h3 className="form__header">Пароль</h3>
+                <p className="form__header">Пароль</p>
                 <input
+                  onChange={handleInput}
                   className="form__input form__input_password"
                   id="password"
                   name="password"
@@ -63,6 +68,7 @@ function Register() {
                   maxLength="30"
                   required
                   value="••••••••••••••"
+                  placeholder="Пароль"
                 />
                 <span className="form__error">Что-то пошло не так...</span>
               </label>
@@ -70,7 +76,7 @@ function Register() {
           </ul>
 
           <button
-            className="form__button animation__button"
+            className="form__button"
             type="submit"
             aria-label="Кнопка сохранить"
           >
@@ -78,14 +84,14 @@ function Register() {
           </button>
           <h2 className="form__span">
             Уже зарегистрированы?
-            <Link className="form__link animation__link" to="/signin">
+            <Link className="form__link" to="/signin">
               {" "}
               Войти
             </Link>
           </h2>
         </form>
-      </div>
-    </div>
+      </main>
+    </section>
   );
 }
 

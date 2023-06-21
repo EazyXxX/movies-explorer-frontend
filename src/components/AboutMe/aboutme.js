@@ -1,7 +1,6 @@
 import React from "react";
 import Avatar from "../../images/photoProfile.png";
 import "./aboutme.css";
-import "../Animation/animation.css";
 import { Link } from "react-router-dom";
 
 function AboutMe() {
@@ -15,14 +14,14 @@ function AboutMe() {
           <p className="about-me__text">
             Я родился и живу в Саратове, закончил факультет экономики СГУ. У
             меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь
-            бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ
+            бегом. Недавно начал кодить.<br className="about-me__break"/> С 2015 года работал в компании «СКБ
             Контур». После того, как прошёл курс по веб-разработке, начал
             заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
           <Link
             to="https://github.com"
             target="_blank"
-            className="about-me__link animation__link"
+            className="about-me__link"
           >
             Github
           </Link>

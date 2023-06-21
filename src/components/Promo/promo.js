@@ -1,6 +1,5 @@
 import React from "react";
 import "./promo.css";
-import "../Animation/animation.css";
 
 function promo() {
   return (
@@ -9,17 +8,19 @@ function promo() {
         <h1 className="promo__title">
           Учебный проект студента факультета Веб-разработки.
         </h1>
+        <nav>
         <ul className="promo__navbar">
-          <li className="promo__nav-wrap animation__button">
+          <li className="promo__nav-wrap">
             <a href="#about" className="promo__nav-element">О проекте</a>
           </li>
-          <li className="promo__nav-wrap animation__button">
+          <li className="promo__nav-wrap">
             <a href="#tech" className="promo__nav-element">Технологии</a>
           </li>
-          <li className="promo__nav-wrap animation__button">
+          <li className="promo__nav-wrap">
             <a href="#about-me" className="promo__nav-element">Студент</a>
           </li>
         </ul>
+        </nav>
       </div>
     </section>
   );
