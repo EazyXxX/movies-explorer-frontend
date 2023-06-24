@@ -12,7 +12,7 @@ function Footer() {
       </div>
       <div className="footer__info">
         <p className="footer__year">
-          ©<span>{new Date().getFullYear()}</span>
+          © <span>{new Date().getFullYear()}</span>
         </p>
         <ul className="footer__list">
           <li className="footer__element">

@@ -2,16 +2,19 @@ import React from "react";
 import Filter from "../Filter/filter";
 import MoviesCardList from "../MoviesCardList/cards";
 import Footer from "../Footer/footer";
+import './movies.css'
 
 function Movies({ state }) {
   return (
-    <section className="movies">
-      <main>
-      <Filter />
-      <MoviesCardList state={state} />
-      <Footer />
+    <>
+      <main className="movies">
+        <section>
+          <Filter />
+          <MoviesCardList state={state} />
+        </section>
       </main>
-    </section>
+      <Footer />
+    </>
   );
 }
 

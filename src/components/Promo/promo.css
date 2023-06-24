@@ -74,7 +74,7 @@
     background-color: #272727;
     border-radius: 10px;
     flex-direction: column;
-    height: 834px;
+    min-height: 834px;
     width: 100%;
     margin-left: 0;
     margin-right: 0;
@@ -131,7 +131,7 @@
   }
 
   .promo__all-box {
-    height: 834px;
+    min-height: 834px;
   }
 }
 
@@ -156,10 +156,6 @@
     height: 586px;
   }
 
-  .promo__all-box {
-    height: 586px;
-  }
-
   .promo__subtitle {
     margin: 0 auto 80px;
   }
@@ -169,8 +165,9 @@
     height: 206px;
     margin: 0 0 44px;
   }
+
   .promo__all-box {
-    height: 586px;
+    min-height: 586px;
     width: 292px;
     margin-left: auto;
     margin-right: auto;

@@ -1,5 +1,5 @@
 .footer {
-  padding: 150px 0px 20px 0px;
+  padding: 88px 0px 20px 0px;
   margin-left: 70px;
   margin-right: 70px;
   max-width: 1140px;
@@ -43,7 +43,7 @@
 .footer__link {
   text-decoration: none;
   color: white;
-  margin: 0 0 0 14px;
+  margin: 0 0 0 12px;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;

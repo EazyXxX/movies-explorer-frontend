@@ -4,9 +4,9 @@ import "./cards.css";
 
 function MoviesCardList({ state }) {
   return (
-    <div className="cards">
+    <section className="cards">
       {/* <h3 className="cards__empty">Фильмы отсутствуют</h3> */}
-      <div className="cards__list">
+      <ul className="cards__list">
         <MoviesCard
           isActive={true}
           state={state}
@@ -79,11 +79,11 @@ function MoviesCardList({ state }) {
           filmName="33 слова о дизайне"
           filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
         />
-      </div>
+      </ul>
       <button type="button" className={`cards__more ${state? '' : 'cards__hidden'}`}>
         Ещё
       </button>
-    </div>
+    </section>
   );
 }
 

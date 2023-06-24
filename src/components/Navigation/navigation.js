@@ -44,7 +44,7 @@ function Navigation({
             </li>
             <li className="menu__link-movies">
               <NavLink
-                className={`menu__link menu__link_margin-left ${
+                className={`menu__link menu__link_margin-left menu__link_saved-films ${
                   savedFilmsUnderline ? "menu__link_underline" : ""
                 }`}
                 to="/saved-movies"

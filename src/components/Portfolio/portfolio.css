@@ -1,5 +1,5 @@
 .portfolio {
-  padding: 0 70px 125px;
+  padding: 0 70px 100px;
 }
 
 .portfolio__title {
@@ -79,7 +79,7 @@
   .portfolio {
     padding-left: 50px;
     padding-right: 50px;
-    padding-bottom: 90px;
+    padding-bottom: 96px;
   }
 
   .portfolio__title {
@@ -106,7 +106,7 @@
     max-width: 292px;
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 70px;
+    margin-bottom: 98px;
   }
 
   .portfolio__title {

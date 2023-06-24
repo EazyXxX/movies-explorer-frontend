@@ -2,7 +2,6 @@
   padding: 104px 70px 100px 70px;
   background-color: #272727;
   margin-left: auto;
-  margin-right: a;
 }
 
 .techs__title {
@@ -132,6 +131,16 @@
     line-height: 17px;
     text-align: center;
     color: white;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .techs {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;  
   }
 }
 

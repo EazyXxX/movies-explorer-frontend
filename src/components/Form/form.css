@@ -1,10 +1,7 @@
 .form {
-  padding: 70px 0;
-}
-
-.form__box {
   width: 396px;
   margin: 0 auto;
+  padding: 70px 0;
 }
 
 .form__logo {
@@ -160,9 +157,6 @@
 @media screen and (max-width: 400px) {
   .form {
     padding: 56px 30px 30px;
-  }
-
-  .form__box {
     width: 260px;
   }
 

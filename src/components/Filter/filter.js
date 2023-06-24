@@ -4,7 +4,6 @@ import "./filter.css";
 function filter() {
   function inputChange(e) {}
   return (
-    <section>
     <form className="filter">
       <div className="filter__box">
         <input
@@ -33,7 +32,6 @@ function filter() {
         </div>
       </div>
     </form>
-    </section>
   );
 }
 

@@ -14,8 +14,8 @@ function MoviesCard({ isActive, filmName, filmLink, state }) {
   }
 
   return (
-    <div className="card">
-      <Link to={filmLink} target="_blank">
+    <li className="card">
+      <Link className="card__image-link" to={filmLink} target="_blank">
         <img
           src={cardImage}
           className="card__image"
@@ -45,7 +45,7 @@ function MoviesCard({ isActive, filmName, filmLink, state }) {
         </button>
         <p className="card__timing">1ч 47м</p>
       </div>
-    </div>
+    </li>
   );
 }
 

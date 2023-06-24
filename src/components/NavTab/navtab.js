@@ -7,21 +7,14 @@ function NavTab() {
     <nav className="nav-menu">
       <ul className="nav-menu__list">
         <li>
-          <button type="button" className="nav-menu__link">
-            <Link className="nav-menu__text-button" to="/signup">
+            <Link className="nav-menu__link nav-menu__text-button" to="/signup">
               Регистрация
             </Link>
-          </button>
         </li>
         <li className="nav-menu__box">
-          <button
-            type="button"
-            className="nav-menu__link"
-          >
-            <Link className="nav-menu__text-button nav-menu__text-button_black" to="/signin">
+            <Link className="nav-menu__link nav-menu__text-button nav-menu__text-button_black" to="/signin">
               Войти
             </Link>
-          </button>
         </li>
       </ul>
     </nav>

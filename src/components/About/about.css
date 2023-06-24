@@ -3,7 +3,7 @@
   background-color: #202020;
   margin-left: 70px;
   margin-right: 70px;
-  padding-bottom: 101px;
+  padding-bottom: 86px;
 }
 
 .about__title {
@@ -25,7 +25,7 @@
 }
 
 .about__column-box {
-  margin-top: 45px;
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
 }
@@ -39,6 +39,7 @@
   font-weight: 400;
   font-size: 20px;
   letter-spacing: -0.8px;
+  margin-bottom: 26px;
 }
 
 .about__text {
@@ -86,7 +87,7 @@
     background-color: #202020;
     margin-left: 50px;
     margin-right: 50px;
-    padding-bottom: 80px;
+    padding-bottom: 66px;
     max-width: 668px;
   }
 
@@ -104,12 +105,12 @@
     border-color: #dadada;
     border-style: solid;
     font-weight: 400;
-    padding-bottom: 23px;
+    padding-bottom: 22px;
     letter-spacing: -1px;
   }
 
   .about__column-box {
-    margin-top: 45px;
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
   }
