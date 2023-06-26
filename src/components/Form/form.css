@@ -32,7 +32,7 @@
 .form__label-container {
   list-style-type: none;
   padding: 0;
-  margin: 0 0 200px 0;
+  margin: 0 0 106px 0;
 }
 
 .form__label {
@@ -143,6 +143,10 @@
   color: #3b6ec7;
 }
 
+.form__margin {
+  margin-bottom: 196px;
+}
+
 @media screen and (max-width: 800px) {
   .form {
     padding-top: 230px;
@@ -174,6 +178,7 @@
 
   .form__label-container {
     height: 428px;
+    margin-bottom: 0px;
   }
 
   .form__span {

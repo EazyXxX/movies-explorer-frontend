@@ -3,7 +3,7 @@ import React from "react";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 
-function Login() {
+function Login({state}) {
   function handleInput(e) {}
 
   return (
@@ -54,6 +54,7 @@ function Login() {
               </label>
             </li>
           </ul>
+          <div className="form__margin" />
           <button
             className="form__button"
             type="submit"
