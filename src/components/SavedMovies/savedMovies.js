@@ -4,12 +4,10 @@ import MoviesCardList from "../MoviesCardList/cards";
 
 function SavedMovies({ state }) {
   return (
-    <section className="movies">
-      <main>
+      <main className="movies">
       <Filter />
       <MoviesCardList state={state} />
       </main>
-    </section>
   );
 }
 

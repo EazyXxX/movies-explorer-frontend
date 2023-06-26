@@ -83,6 +83,7 @@ function MoviesCardList({ state }) {
       <button type="button" className={`cards__more ${state? '' : 'cards__hidden'}`}>
         Ещё
       </button>
+      {state? '' : <div className="cards__margin"/>}
     </section>
   );
 }

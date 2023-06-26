@@ -8,10 +8,8 @@ function Movies({ state }) {
   return (
     <>
       <main className="movies">
-        <section>
           <Filter />
           <MoviesCardList state={state} />
-        </section>
       </main>
       <Footer />
     </>

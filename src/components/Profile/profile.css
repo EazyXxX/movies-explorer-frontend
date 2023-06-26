@@ -14,7 +14,7 @@
 }
 
 .profile__form {
-  margin-top: 103px;
+  margin-top: 120px;
   width: 410px;
   margin-left: auto;
   margin-right: auto;
@@ -36,17 +36,18 @@
   border-bottom: 1px;
   border-style: solid;
   border-color: #424242;
+  padding-bottom: 4px;
 }
 
 .profile__box:nth-of-type(2) {
-  padding-top: 18px;
+  padding-top: 14px;
 }
 
 .profile__header {
   color: white;
   font-size: 11px;
   font-weight: 100;
-  margin: 0 10px 0 0;
+  margin: 4px 10px 0 0;
   white-space: nowrap;
 }
 
@@ -149,7 +150,7 @@
 
   .profile__form {
     padding-right: 0;
-    margin-top: 54px;
+    margin-top: 70px;
   }
 
   .profile__link-box {
@@ -183,7 +184,7 @@
     max-width: 260px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 38px;
+    margin-top: 52px;
   }
 
   .profile__header {
@@ -204,5 +205,9 @@
 
   .profile__link {
     font-size: 12px;
+  }
+
+  .profile__link_red {
+    letter-spacing: 0.3px;
   }
 }
