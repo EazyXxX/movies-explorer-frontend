@@ -1,0 +1,132 @@
+.cards {
+  max-width: 1280px;
+}
+
+.cards__empty {
+  text-align: center;
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 15px;
+  margin: 30px auto;
+  color: white;
+}
+
+.cards__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 24px;
+  grid-row-gap: 30px;
+  box-sizing: border-box;
+  margin-left: 70px;
+  margin-right: 70px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.cards__more {
+  height: 36px;
+  background-color: #2f2f2f;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: white;
+  width: 1140px;
+  margin-right: 70px;
+  margin-left: 70px;
+  margin-top: 44px;
+  margin-bottom: 70px;
+  opacity: 1;
+  transition: opacity 0.06s linear 0.1s;
+}
+
+.cards__more:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.cards__hidden {
+  display: none;
+}
+
+.cards__margin {
+margin-bottom: 238px;
+}
+
+@media screen and (max-width: 1279px) {
+  .cards {
+    max-width: 1220px;
+  }
+
+  .cards__more {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-left: 33px;
+    margin-right: 33px;
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .cards {
+    max-width: 758px;
+  }
+
+  .cards__list {
+    grid-template-columns: repeat(2, 339px);
+    grid-column-gap: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 72px;
+    grid-row-gap: 27px;
+    max-width: 768px;
+    justify-content: center;
+  }
+
+  .cards__more {
+    max-width: 708px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 70px;
+    margin-bottom: 105px;
+    align-self: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .cards__margin {
+    margin-bottom: 205px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+  .cards {
+    padding: 50px 0 0;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cards__list {
+    grid-template-columns: 1fr;
+    grid-row-gap: 26px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 116px;
+    grid-row-gap: 7px;
+  }
+
+  .cards__more {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 56px;
+    margin-bottom: 108px;
+  }
+
+  .cards__margin {
+    margin-bottom: 195px;
+    }
+}

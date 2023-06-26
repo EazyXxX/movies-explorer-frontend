@@ -1,0 +1,256 @@
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 38px;
+}
+
+.menu__main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 34px;
+  z-index: 12;
+}
+
+.menu__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.menu__link {
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  color: white;
+  margin: auto;
+}
+
+.menu__avatar-container {
+  width: 26px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: #313131;
+  box-sizing: border-box;
+  display: flex;
+  margin-left: 17px;
+  opacity: 1;
+  transition: opacity 0.06s linear 0.1s;
+}
+
+.menu__avatar-container:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.menu__avatar {
+  width: 11.5px;
+  height: 14px;
+  align-self: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.menu__blur {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.3;
+  transition: display 0.5s;
+  will-change: transform;
+}
+
+.menu__cross-button {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  border: none;
+  padding: 0;
+  background-image: url(../../images/Cross.svg);
+  background-color: transparent;
+  background-size: 32px 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+
+.menu__link-movies {
+  opacity: 1;
+  transition: opacity 0.06s linear 0.1s;
+}
+
+.menu__link-movies:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.menu__link-profile {
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  color: white;
+  margin: auto;
+  opacity: 1;
+  transition: opacity 0.06s linear 0.1s;
+}
+
+.menu__link-profile:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.menu__link_hidden {
+  display: none;
+}
+
+.menu__link_margin-left {
+  margin-left: 12px;
+}
+
+.menu__link_saved-films {
+  padding-left: 5px;
+}
+
+.menu__link_avatar {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 924px) {
+  .menu {
+    max-height: none;
+  }
+
+  .menu__main {
+    visibility: hidden;
+    padding-bottom: 0px;
+    right: 0;
+    top: 0;
+    width: 520px;
+    height: 100%;
+    background-color: #202020;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 137px 90px 86px 92px;
+    z-index: 3;
+    position: fixed;
+    padding-top: 130px;
+  }
+
+  .menu__blur {
+    position: fixed;
+  }
+
+  .header.opened .menu__main {
+    visibility: visible;
+  }
+
+  .header.opened .menu__blur {
+    display: block;
+  }
+
+  .menu__link-span {
+    display: block;
+  }
+
+  .menu__list-movies {
+    display: block;
+    text-align: center;
+  }
+
+  .menu__list:last-child {
+    margin-top: 620px;
+  }
+
+  .menu__link {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+  }
+
+  .menu__link_underline {
+    padding-bottom: 4px;
+    border-bottom: 2px solid white;
+  }
+
+  .menu__link_margin-left {
+    margin-left: 0;
+  }
+
+  .menu__link-movies {
+    margin-top: 28px;
+  }
+
+  .menu__avatar {
+    width: 11.5px;
+    height: 14px;
+  }
+
+  .menu__avatar-container {
+    width: 26px;
+    height: 30px;
+  }
+
+  .menu__link_hidden {
+    display: block;
+  }
+
+  .menu__link_avatar {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu__main  {
+    width: 100%;
+    padding: 118px 10px 0px 0px;
+  }
+
+  .menu__list {
+    margin-right: 10px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+  }
+
+  .menu__list:last-child {
+    margin-top: 400px;
+  }
+
+  .menu__list-movies {
+    min-height: 110px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    margin-top: 26px;
+  }
+
+  .menu__link-movies {
+    margin-top: 0;
+  }
+
+  .menu__list:last-child {
+    margin-top: 396px;
+  }
+
+  .menu__link_underline {
+    padding-bottom: 8px;
+    border-bottom: 2px solid white;
+  }
+}
