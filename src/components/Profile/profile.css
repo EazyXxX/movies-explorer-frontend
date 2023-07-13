@@ -137,6 +137,10 @@
   color: #ee3465;
 }
 
+.profile__error_positive {
+  color: #41ef6d;
+}
+
 .profile__hidden {
   display: none;
 }

@@ -10,6 +10,7 @@
   margin-right: 70px;
   margin-bottom: 75px;
   display: flex;
+  position: relative;
 }
 
 .filter__box {
@@ -71,6 +72,10 @@
   background-color: #3b6ec7;
 }
 
+.filter__button_disabled {
+  background-color: grey;
+}
+
 .filter__moniker {
   color: white;
   font-weight: 100;
@@ -81,6 +86,16 @@
   line-height: 18px;
   margin-left: 41px;
   align-self: center;
+}
+
+.filter__error {
+  color: #ff3c70;
+  font-weight: 100;
+  font-size: 13px;
+  line-height: 18px;
+  position: absolute;
+  bottom: 56px;
+  left: 26px;
 }
 
 .filter__switch-box {
@@ -199,6 +214,11 @@
   .filter__box {
     height: 46px;
   }
+
+  .filter__error {
+    bottom: 90px;
+    left: 248px;
+  }
 }
 
 @media screen and (max-width: 740px) {
@@ -255,5 +275,10 @@
     font-size: 11px;
     margin-left: 42px;
     margin-top: 0;
+  }
+
+  .filter__error {
+    bottom: -30px;
+    left: 46px;
   }
 }

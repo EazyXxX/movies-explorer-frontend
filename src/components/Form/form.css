@@ -114,6 +114,10 @@
   background-color: #3b6ec7;
 }
 
+.form__button_disabled {
+  background-color: #8b8b8b;
+}
+
 .form__span {
   font-weight: 400;
   font-size: 14px;
