@@ -96,7 +96,7 @@ function App() {
         setSavedMovies(arrSavedMovies);
       }
     }
-  }, []);
+  }, [loggedIn]);
 
   const searchMovies = useCallback(async () => {
     setLoading(true);
