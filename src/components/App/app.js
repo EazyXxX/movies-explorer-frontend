@@ -52,7 +52,6 @@ function App() {
     const timer = setTimeout(() => {
       setMessageOk("");
     }, 2000);
-
     return () => clearTimeout(timer);
   }, [messageOk]);
 
