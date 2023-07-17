@@ -1,5 +1,5 @@
 import "./profile.css";
-import { React, useState, useEffect, useContext } from "react";
+import { React, useState, useEffect, useContext, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -32,15 +32,15 @@ function Profile({
     if (!errorUpdateUser) {
       setIsEditProfile(true);
     }
-  }, [currentUser]);
+  }, [currentUser, errorUpdateUser]);
 
-  function checkFieldsDiversity() {
+  const checkFieldsDiversity = useCallback(() => {
     const arr = {
       name: currentUser.name,
       email: currentUser.email,
     };
     return JSON.stringify(arr) === JSON.stringify(formData);
-  }
+  }, [currentUser.email, currentUser.name, formData]);
 
   function handleInput(e) {
     resetError();
@@ -56,9 +56,9 @@ function Profile({
     } else {
       setIsValid(false);
     }
-  }, [formData, form]);
+  }, [formData, form, checkFieldsDiversity]);
 
-  function onSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     handleUpdateUser({
       name: formData.name,
@@ -70,13 +70,20 @@ function Profile({
     <main className="profile">
       <section>
         <h1 className="profile__salute">{`Привет, ${currentUser.name}!`}</h1>
-        <form className="profile__form" name="profile" onSubmit={onSubmit}>
+        <form
+          className="profile__form"
+          name="profile"
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <div className="profile__box">
             <p className="profile__header">Имя</p>
             <label className="profile__label">
               <input
                 onChange={handleInput}
-                className="profile__input"
+                className={`profile__input ${
+                  !isEditProfile ? "profile__input_outline" : ""
+                }`}
                 type="text"
                 id="name"
                 name="name"
@@ -94,7 +101,9 @@ function Profile({
             <label className="profile__label">
               <input
                 onChange={handleInput}
-                className="profile__input"
+                className={`profile__input ${
+                  !isEditProfile ? "profile__input_outline" : ""
+                }`}
                 type="email"
                 id="email"
                 name="email"
@@ -103,48 +112,47 @@ function Profile({
                 placeholder="E-mail"
                 value={formData.email}
                 disabled={isEditProfile}
+                pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               ></input>
             </label>
           </div>
-        </form>
-        <div className="profile__link-box">
-          <button className="profile__link" type="button">
-            Редактировать
-          </button>
-          <Link className="profile__link profile__link_red" to="/">
-            Выйти из аккаунта
-          </Link>
-          <span className="profile__error profile__error_positive">
-            {messageOk}
-          </span>
-          <span className="profile__error">
-            {errorMessage.name || errorMessage.email || errorUpdateUser}
-          </span>
-          {isEditProfile ? (
-            <span className="profile__button" onClick={editProfile}>
-              Редактировать
+          <div className="profile__link-box">
+            <span className="profile__error profile__error_positive">
+              {messageOk}
             </span>
-          ) : (
-            <button
-              className={`profile__button ${
-                !isValid && errorUpdateUser
-                  ? "profile__hidden animation__button"
-                  : ""
-              }`}
-              type="submit"
-              id="save"
-            >
-              Сохранить
-            </button>
-          )}
-        </div>
-        {isEditProfile ? (
-          <span className="profile__button" onClick={signOut}>
-            Выйти из аккаунта
-          </span>
-        ) : (
-          ""
-        )}
+            {isEditProfile ? (
+              <span className="profile__link" onClick={editProfile}>
+                Редактировать
+              </span>
+            ) : (
+              <button
+                className={`profile__link ${
+                  !isValid && errorUpdateUser ? "profile__hidden" : ""
+                }`}
+                type="submit"
+                id="save"
+                aria-label="Сохранить"
+                disabled={!isValid || errorUpdateUser}
+              >
+                Сохранить
+              </button>
+            )}
+            {isEditProfile ? (
+              <Link
+                className="profile__link profile__link_red"
+                onClick={signOut}
+                to="/"
+              >
+                Выйти из аккаунта
+              </Link>
+            ) : (
+              ""
+            )}
+            <span className="profile__error">
+              {errorMessage.name || errorMessage.email || errorUpdateUser}
+            </span>
+          </div>
+        </form>
       </section>
     </main>
   );

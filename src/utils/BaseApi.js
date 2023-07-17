@@ -1,11 +1,11 @@
 export class BaseApi {
-  constructor(baseUrl, headers) {
-    this._url = baseUrl;
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
     this._headers = headers;
   }
 
   _checkResponse(res) {
-    return res.json().then(result => {
+    return res.json().then((result) => {
       if (res.ok) {
         return result;
       } else if (result.message) {
@@ -13,7 +13,7 @@ export class BaseApi {
       } else {
         return Promise.reject(`Ошибка: ${res.status}`);
       }
-    })
+    });
   }
 
   _request(url, options) {

@@ -1,9 +1,9 @@
 import { BaseApi } from "./BaseApi";
-import { MOVIES_API } from "../components/constants/Api";
+import { MOVIES_API } from "../constants/Api";
 
 export class MoviesApi extends BaseApi {
   getMovies() {
-    return super._request(`${this._url}/beatfilm-movies`, {
+    return super._request(`${this._baseUrl}`, {
       method: "GET",
       headers: this._headers,
     });
@@ -11,7 +11,7 @@ export class MoviesApi extends BaseApi {
 }
 
 const filmsApi = new MoviesApi({
-  url: MOVIES_API,
+  baseUrl: MOVIES_API,
   headers: {
     "Content-Type": "application/json",
   },

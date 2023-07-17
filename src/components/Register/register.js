@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 
 function Register({ errorCreateUser, resetError, onCreateUser }) {
   const [errorMessage, setErrorMessage] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   });
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   });
 
   const [isValid, setIsValid] = useState(false);

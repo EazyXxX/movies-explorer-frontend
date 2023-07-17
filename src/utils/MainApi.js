@@ -1,23 +1,21 @@
 import { BaseApi } from "./BaseApi";
-import { MAIN_API, MOVIES_API } from "../components/constants/Api";
+import { MAIN_API, MOVIES_API } from "../constants/Api";
 
 class MainApi extends BaseApi {
-  
   register(name, email, password) {
-    return super._request(`${this._url.url}/signup`, {
+    return super._request(`${this._baseUrl}/signup`, {
       method: "POST",
-      credentials: "include",
       headers: this._headers,
       body: JSON.stringify({
         name,
         email,
-        password
+        password,
       }),
     });
   }
 
   authorize(email, password) {
-    return super._request(`${this._url.url}/signin`, {
+    return super._request(`${this._baseUrl}/signin`, {
       method: "POST",
       credentials: "include",
       headers: this._headers,
@@ -28,8 +26,15 @@ class MainApi extends BaseApi {
     });
   }
 
+  signOut() {
+    return super._request(`${this._baseUrl}/signout`, {
+      method: "POST",
+      credentials: "include",
+    });
+  }
+
   checkToken() {
-    return super._request(`${this._url.url}/users/me`, {
+    return super._request(`${this._baseUrl}/users/me`, {
       method: "GET",
       credentials: "include",
       headers: this._headers,
@@ -37,7 +42,7 @@ class MainApi extends BaseApi {
   }
 
   getUserInfo() {
-    return super._request(`${this._url.url}/users/me`, {
+    return super._request(`${this._baseUrl}/users/me`, {
       method: "GET",
       credentials: "include",
       headers: this._headers,
@@ -45,7 +50,7 @@ class MainApi extends BaseApi {
   }
 
   patchUserInfo(email, name) {
-    return super._request(`${this._url.url}/users/me`, {
+    return super._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       credentials: "include",
       headers: this._headers,
@@ -56,15 +61,8 @@ class MainApi extends BaseApi {
     });
   }
 
-  signOut() {
-    return super._request(`${this._url.url}/signout`, {
-      method: "POST",
-      credentials: "include",
-    });
-  }
-
   getSavedMovies() {
-    return super._request(`${this._url.url}/movies`, {
+    return super._request(`${this._baseUrl}/movies`, {
       method: "GET",
       credentials: "include",
       headers: this._headers,
@@ -85,7 +83,7 @@ class MainApi extends BaseApi {
       nameRU,
       nameEN,
     } = data;
-    return super._request(`${this._url.url}/movies`, {
+    return super._request(`${this._baseUrl}/movies`, {
       method: "POST",
       credentials: "include",
       headers: this._headers,
@@ -106,7 +104,7 @@ class MainApi extends BaseApi {
   }
 
   deleteMovie(id) {
-    return super._request(`${this._url.url}/movies/${id}`, {
+    return super._request(`${this._baseUrl}/movies/${id}`, {
       method: "DELETE",
       credentials: "include",
       headers: this._headers,
@@ -115,7 +113,7 @@ class MainApi extends BaseApi {
 }
 
 const authApi = new MainApi({
-  url: MAIN_API,
+  baseUrl: MAIN_API,
   headers: {
     "Content-Type": "application/json",
   },

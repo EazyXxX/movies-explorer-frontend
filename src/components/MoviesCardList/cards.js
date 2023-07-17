@@ -9,7 +9,7 @@ import {
   MOVIES_ROW_MOBILE,
   MOVIES_LINE_DESKTOP,
   MOVIES_LINE_MOBILE,
-} from "../constants/Constants";
+} from "../../constants/Constants";
 
 function MoviesCardList({ state, filteredMovies, addMovie, deleteMovie, type }) {
   const [size, setSize] = useState(0);
@@ -32,7 +32,7 @@ function MoviesCardList({ state, filteredMovies, addMovie, deleteMovie, type }) 
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [filteredMovies]);
 
   const handleShowMore = useCallback(() => {
     if (filteredMovies.length > startIndex + size) {
@@ -40,7 +40,7 @@ function MoviesCardList({ state, filteredMovies, addMovie, deleteMovie, type }) 
     } else {
       setShowMore(false);
     }
-  },[filteredMovies.length, size, startIndex])
+  },[filteredMovies, size, startIndex])
 
   useEffect(() => {
     handleShowMore();
@@ -50,7 +50,6 @@ function MoviesCardList({ state, filteredMovies, addMovie, deleteMovie, type }) 
     setStartIndex(startIndex + size);
     handleShowMore();
   }
-
   const moviesElements = filteredMovies
     .slice(0, showMore ? startIndex : filteredMovies.length)
     .map((card) => (
@@ -75,7 +74,6 @@ function MoviesCardList({ state, filteredMovies, addMovie, deleteMovie, type }) 
       >
         Ещё
       </button>
-      {state ? "" : <div className="cards__margin" />}
     </section>
   );
 }

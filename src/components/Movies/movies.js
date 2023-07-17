@@ -4,10 +4,12 @@ import MoviesCardList from "../MoviesCardList/cards";
 import Footer from "../Footer/footer";
 import "./movies.css";
 import Preloader from "../Preloader/preloader";
+import Header from "../Header/header";
 
-function Movies({ state, loading, nullRequest, nullResult, error, addMovie, deleteMovie, searchMovies, filteredMovies }) {
+function Movies({ loggedIn, state, loading, nullRequest, nullResult, error, addMovie, deleteMovie, searchMovies, filteredMovies }) {
   return (
     <>
+      <Header loggedIn={loggedIn}/>
       <main className="movies">
         <Filter 
         typeSearch={'search'}
@@ -20,12 +22,7 @@ function Movies({ state, loading, nullRequest, nullResult, error, addMovie, dele
         {nullRequest && <h3 className="movies__empty">Введите ключевое слово</h3>}
         {nullResult && <h3 className="movies__empty">Фильмы отсутствуют</h3>}
         {error && <h3 className="movies__empty">Во время запроса произошла ошибка. Попробуйте ещё раз</h3>}
-        {!loading && !error && !nullRequest && !nullResult && <MoviesCardList filteredMovies={filteredMovies} addMovie={addMovie} deleteMovie={deleteMovie} type={true} />}
-        {!state ? (
-          <h3 className="movies__empty">Фильмы отсутствуют</h3>
-        ) : (
-          <MoviesCardList state={state} />
-        )}
+        {!loading && !error && !nullRequest && !nullResult && <MoviesCardList state={state} filteredMovies={filteredMovies} addMovie={addMovie} deleteMovie={deleteMovie} type={true} />}
       </main>
       <Footer />
     </>
