@@ -77,7 +77,7 @@ function App() {
     setErrorAuthorization("");
     setErrorUpdateUser("");
   }
-
+  
   useEffect(() => {
     if (loggedIn) {
       const arrMovies = JSON.parse(localStorage.getItem('moviesList')) || [];
