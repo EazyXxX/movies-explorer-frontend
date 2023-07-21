@@ -34,6 +34,7 @@ class MainApi extends BaseApi {
   }
 
   checkToken() {
+    console.log(this._headers)
     return super._request(`${this._baseUrl}/users/me`, {
       method: "GET",
       credentials: "include",

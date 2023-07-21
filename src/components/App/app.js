@@ -262,13 +262,13 @@ function App() {
         }
       })
       .catch((err) =>
-        console.log(err, "Не удалось авторизировать пользователя.")
+        console.log(err, "Не удалось авторизовать пользователя.")
       );
   }
 
   useEffect(() => {
     tokenCheck();
-  }, [loggedIn]);
+  }, []);
 
   function signOut() {
     authApi

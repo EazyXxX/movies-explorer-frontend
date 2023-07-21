@@ -17,6 +17,7 @@ export class BaseApi {
   }
 
   _request(url, options) {
+    console.log(url, options)
     return fetch(url, options).then(this._checkResponse);
   }
 }
