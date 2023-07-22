@@ -1,15 +1,16 @@
 export class BaseApi {
-  constructor({ baseUrl, headers }) {
-    this._baseUrl = baseUrl;
-    this._headers = headers;
+  constructor(config) {
+    this._config = config;
+    this._url = config.url;
+    this._headers = config.headers;
   }
 
   _checkResponse(res) {
-    return res.json().then((result) => {
+    return res.json().then((jsonRes) => {
       if (res.ok) {
-        return result;
-      } else if (result.message) {
-        return Promise.reject(`Ошибка: ${result.message}`);
+        return jsonRes;
+      } else if (jsonRes.message) {
+        return Promise.reject(`Ошибка: ${jsonRes.message}`);
       } else {
         return Promise.reject(`Ошибка: ${res.status}`);
       }
@@ -17,7 +18,6 @@ export class BaseApi {
   }
 
   _request(url, options) {
-    console.log(url, options)
     return fetch(url, options).then(this._checkResponse);
   }
 }

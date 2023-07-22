@@ -30,37 +30,38 @@ function MoviesCardList({ state, filteredMovies, addMovie, deleteMovie, type }) 
       }
     }
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [filteredMovies]);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-  const handleShowMore = useCallback(() => {
+  useEffect(() => {
+    handleShowMore();
+  }, [startIndex, filteredMovies])
+
+  function handleShowMore() {
     if (filteredMovies.length > startIndex + size) {
       setShowMore(true);
     } else {
       setShowMore(false);
     }
-  },[filteredMovies, size, startIndex])
-
-  useEffect(() => {
-    handleShowMore();
-  }, [startIndex, filteredMovies, handleShowMore]);
+  }
 
   function handleClick() {
     setStartIndex(startIndex + size);
-    handleShowMore();
+    handleShowMore()
   }
-  const moviesElements = filteredMovies
-    .slice(0, showMore ? startIndex : filteredMovies.length)
-    .map((card) => (
-      <MoviesCard
-        addMovie={addMovie}
-        deleteMovie={deleteMovie}
-        key={card.id}
-        card={card}
-        type={type}
-      />
-    ));
+
+  const moviesElements = filteredMovies.slice(0, showMore ? startIndex : filteredMovies.length).map((card) => (
+
+    < MoviesCard
+      state={state}
+      addMovie={addMovie}
+      deleteMovie={deleteMovie}
+      key={card.id}
+      card={card}
+      type={type}
+    />
+  ))
 
   return (
     <section className="cards">
@@ -68,8 +69,7 @@ function MoviesCardList({ state, filteredMovies, addMovie, deleteMovie, type }) 
         {moviesElements}
       </ul>
       <button
-        type="button"
-        className={`cards__more ${state ? "" : "cards__hidden"}`}
+        className={`cards__more ${showMore ? "" : "cards__hidden"}`}
         onClick={handleClick}
       >
         Ещё

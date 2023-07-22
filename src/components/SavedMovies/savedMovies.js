@@ -18,10 +18,12 @@ function SavedMovies({
   deleteMovie,
   handleStripesClick,
   isStripesMenuOpened,
+  theme,
 }) {
   return (
     <>
       <Header
+        theme={theme}
         loggedIn={loggedIn}
         handleStripesClick={handleStripesClick}
         isStripesMenuOpened={isStripesMenuOpened}
@@ -46,7 +48,7 @@ function SavedMovies({
             Во время запроса произошла ошибка. Попробуйте ещё раз
           </h3>
         )}
-        {loading && !error && !nullRequest && !nullResult && (
+        {!loading && !error && !nullRequest && !nullResult && (
           <SavedMoviesCardList
             state={state}
             filteredMovies={filteredMovies}
@@ -55,7 +57,7 @@ function SavedMovies({
           />
         )}
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }

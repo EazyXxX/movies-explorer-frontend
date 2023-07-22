@@ -8,12 +8,14 @@ function FilterCheckbox({ isChecked, handleCheckbox }) {
         <p className="filter__moniker">Короткометражки</p>
         <label className="filter__switch">
           <input
-            className="filter__checkbox-input"
+            className={`filter__checkbox-input ${
+              isChecked ? "filter__checkbox-input_checked" : ""
+            }`}
             type="checkbox"
             сhecked={isChecked.toString()}
             onChange={handleCheckbox}
           />
-          <span className="filter__slider"></span>
+          <span className={`filter__slider`}></span>
         </label>
       </div>
     </div>

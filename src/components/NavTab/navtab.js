@@ -11,11 +11,13 @@ function NavTab() {
               Регистрация
             </Link>
         </li>
+        <Link className="nav-menu__link" to="/signin">
         <li className="nav-menu__box">
-            <Link className="nav-menu__link nav-menu__text-button nav-menu__text-button_black" to="/signin">
+            <p className="nav-menu__text-button nav-menu__text-button_black">
               Войти
-            </Link>
+            </p>
         </li>
+        </Link>
       </ul>
     </nav>
   );

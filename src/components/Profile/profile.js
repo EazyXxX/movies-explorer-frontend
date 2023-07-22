@@ -93,6 +93,7 @@ function Profile({
                 value={formData.name}
                 maxLength="20"
                 disabled={isEditProfile}
+                pattern='[a-zA-Zа-яА-Я-\s]*'
               ></input>
             </label>
           </div>
@@ -113,6 +114,7 @@ function Profile({
                 value={formData.email}
                 disabled={isEditProfile}
                 pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                noValidate
               ></input>
             </label>
           </div>
@@ -127,7 +129,7 @@ function Profile({
             ) : (
               <button
                 className={`profile__link ${
-                  !isValid && errorUpdateUser ? "profile__hidden" : ""
+                  isValid && !errorUpdateUser ? "" : "profile__hidden"
                 }`}
                 type="submit"
                 id="save"

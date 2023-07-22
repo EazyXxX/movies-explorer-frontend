@@ -7,15 +7,14 @@ import { Link } from "react-router-dom";
 import { MOVIES_API } from "../../constants/Api";
 
 function MoviesCard({ isActive, state, addMovie, card, deleteMovie, type }) {
-  const savedMovies = JSON.parse(localStorage.getItem('savedMoviesList'));
+  const savedMovies = JSON.parse(localStorage.getItem('saveMoviesList'));
   const [isLiked, setIsLiked] = useState(savedMovies?.some((i) => i.movieId === card.id))
 
     function handleLike() {  
       if (isLiked) {
-        const savedMoviesList = JSON.parse(localStorage.getItem('savedMoviesList'));
+        const savedMoviesList = JSON.parse(localStorage.getItem('saveMoviesList'));
         const savedCard = savedMoviesList.find((i) => i.movieId === card.id);
         deleteMovie(savedCard);
-        console.log('disliked')
       } else if (!isLiked) {
         addMovie(card);
       }
@@ -41,13 +40,13 @@ function MoviesCard({ isActive, state, addMovie, card, deleteMovie, type }) {
         <button
           type="button"
           className="card__like-button"
-          onClick={handleLike}
         >
-          {!state ? (
+          {state ? (
             <img
               src={isActive || isLiked ? redLike : like}
               className="card__like"
               alt="Иконка лайка"
+              onClick={handleLike}
             ></img>
           ) : (
             <img

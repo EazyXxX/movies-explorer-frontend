@@ -31,6 +31,7 @@ function Register({ errorCreateUser, resetError, onCreateUser }) {
       passwordInput.classList.add("form__input_password");
     }
   }
+  
 
   function handleFormSubmit(e) {
     e.preventDefault();
@@ -68,6 +69,7 @@ function Register({ errorCreateUser, resetError, onCreateUser }) {
                   required
                   value={formData.name}
                   placeholder="Имя"
+                  pattern='[a-zA-Zа-яА-Я-\s]*'
                 />
                 <span className="form__error">{errorMessage.name}</span>
               </label>
@@ -86,6 +88,7 @@ function Register({ errorCreateUser, resetError, onCreateUser }) {
                   required
                   value={formData.email}
                   placeholder="E-mail"
+                  pattern='^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                 />
                 <span className="form__error">{errorMessage.email}</span>
               </label>

@@ -30,7 +30,7 @@ function Filter({
       localStorage.removeItem("saveCheckboxState");
       setFilteredSavedMovies([]);
     }
-  }, [typeSearch, setFilteredSavedMovies, isChecked]);
+  }, []);
 
   useEffect(() => {
     if (typeSearch === "search") {
@@ -48,11 +48,22 @@ function Filter({
       }
       return;
     }
-  }, [isChecked, typeSearch, searchMovies, setFilteredSavedMovies]);
+  }, [isChecked]);
 
   function handleCheckbox() {
     setIsChecked(!isChecked);
-    localStorage.setItem(checkboxType, !isChecked);
+    localStorage.setItem(checkboxType, JSON.stringify(!isChecked));
+  }
+
+  function handleSearch(e) {
+    setIsValid(e.target.form.checkValidity());
+    setSearch(e.target.value);
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    localStorage.setItem(searchType, search);
+    searchMovies();
   }
 
   const filterSubmit = (e) => {
@@ -60,17 +71,6 @@ function Filter({
       return true;
     }
   };
-
-  const handleSearch = (e) => {
-    setIsValid(e.target.form.checkValidity());
-    setSearch(e.target.value);
-  };
-
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    localStorage.setItem(searchType, search);
-    searchMovies();
-  }
 
   return (
     <section>
@@ -90,12 +90,12 @@ function Filter({
           ></input>
           <button
             className={`filter__button ${
-              !isValid || loading ? "filter__button_disabled" : ""
+              loading ? "filter__button_disabled" : ""
             }`}
             title="Иконка лупы"
             type="submit"
             onSubmit={filterSubmit}
-            disabled={!isValid || loading}
+            disabled={loading}
           ></button>
         </div>
         <FilterCheckbox isChecked={isChecked} handleCheckbox={handleCheckbox} />
