@@ -39,7 +39,7 @@ function App() {
   const [saveLoading, setSaveLoading] = useState(false);
   const [saveError, setSaveError] = useState(false);
   const [saveNullRequest, setSaveNullRequest] = useState(false);
-  const [saveNullResult, setSaveNullRsult] = useState(false);
+  const [saveNullResult, setSaveNullResult] = useState(false);
 
   // сообщения
   const [errorCreateUser, setErrorCreateUser] = useState('');
@@ -52,7 +52,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMessageOk('');
-    }, 2000);
+    }, 10000);
 
     return () => clearTimeout(timer);
   }, [messageOk]);
@@ -96,7 +96,7 @@ function App() {
     }
   }, [loggedIn]);
 
-  const searchMovies = useCallback( async () => {
+  const searchMovies = async () => {
     setLoading(true);
     setError(false);
     setNullRequest(false);
@@ -130,20 +130,13 @@ function App() {
       console.log(e)
       setError(true);
     }
-  },[movies])
-
-  useEffect(() => {
-    const searchQuery = localStorage.getItem('searchQuery') || '';
-    if (searchQuery) {
-      searchMovies();
-    }
-  }, [movies, searchMovies]);
+  }
 
   const searchSavedMovies = () => {
     setSaveLoading(true);
     setSaveError(false);
     setSaveNullRequest(false);
-    setSaveNullRsult(false)
+    setSaveNullResult(false)
 
     try {
       const checked = JSON.parse(localStorage.getItem('saveCheckboxState'));
@@ -168,7 +161,7 @@ function App() {
       setFilteredSavedMovies(dataFilteredMovies);
 
       if (dataFilteredMovies.length === 0) {
-        setSaveNullRsult(true);
+        setSaveNullResult(true);
       }
 
       setSaveLoading(false);
