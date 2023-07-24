@@ -44,7 +44,7 @@ function Movies({
         {nullResult && <h3 className="movies__empty">Фильмы отсутствуют</h3>}
         {error && (
           <h3 className="movies__empty">
-            Во время запроса произошла ошибка. Попробуйте ещё раз
+            Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз
           </h3>
         )}
         {!loading && !error && !nullRequest && !nullResult && (

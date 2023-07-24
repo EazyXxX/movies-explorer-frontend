@@ -1,6 +1,6 @@
 export const FILM_DURATION = 40;
 
-export const WINDOW__SIZE_DESKTOP = 1030;
+export const WINDOW__SIZE_DESKTOP = 1220;
 export const WINDOW__SIZE_TABLET = 650;
 
 export const MOVIES_ROW_DESKTOP = 12;

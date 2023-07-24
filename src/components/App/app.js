@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Navigate, Route, Routes } from "react-router-dom";
 import "./app.css";
 import Main from "../Main/Main";
@@ -12,7 +12,7 @@ import Movies from "../Movies/movies";
 import SavedMovies from "../SavedMovies/savedMovies";
 import ProtectedRoute from "../../ProtectedRoute/ProtectedRoute";
 import { FILM_DURATION } from "../../constants/Constants";
-import {filmsApi}  from "../../utils/MoviesApi";
+import { filmsApi } from "../../utils/MoviesApi";
 import { authApi } from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -28,7 +28,9 @@ function App() {
   const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
 
   //Авторизован пользователь, или нет
-  const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem('loggedIn')));
+  const [loggedIn, setLoggedIn] = useState(
+    Boolean(localStorage.getItem("loggedIn"))
+  );
 
   //состояния
   const [loading, setLoading] = useState(false);
@@ -42,16 +44,16 @@ function App() {
   const [saveNullResult, setSaveNullResult] = useState(false);
 
   // сообщения
-  const [errorCreateUser, setErrorCreateUser] = useState('');
-  const [errorAuthorization, setErrorAuthorization] = useState('');
-  const [errorUpdateUser, setErrorUpdateUser] = useState('');
-  const [messageOk, setMessageOk] = useState('');
+  const [errorCreateUser, setErrorCreateUser] = useState("");
+  const [errorAuthorization, setErrorAuthorization] = useState("");
+  const [errorUpdateUser, setErrorUpdateUser] = useState("");
+  const [messageOk, setMessageOk] = useState("");
 
   const [isStripesMenuOpened, setIsStripesMenuOpened] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setMessageOk('');
+      setMessageOk("");
     }, 10000);
 
     return () => clearTimeout(timer);
@@ -59,36 +61,42 @@ function App() {
 
   function filterMovies(search, arr) {
     return arr.filter((item) => {
-      return item.nameEN.toLowerCase().includes(search.toLowerCase()) ||
+      return (
+        item.nameEN.toLowerCase().includes(search.toLowerCase()) ||
         item.nameRU.toLowerCase().includes(search.toLowerCase())
-    })
+      );
+    });
   }
 
   function filterTime(arr) {
     return arr.filter((item) => {
       return item.duration < FILM_DURATION;
-    })
+    });
   }
 
   function handleResetError() {
-    setErrorCreateUser('');
-    setErrorAuthorization('');
-    setErrorUpdateUser('')
+    setErrorCreateUser("");
+    setErrorAuthorization("");
+    setErrorUpdateUser("");
   }
 
   useEffect(() => {
     if (loggedIn) {
-      const arrMovies = JSON.parse(localStorage.getItem('moviesList')) || [];
-      const arrSavedMovies = JSON.parse(localStorage.getItem('saveMoviesList')) || [];
+      const arrMovies = JSON.parse(localStorage.getItem("moviesList")) || [];
+      const arrSavedMovies =
+        JSON.parse(localStorage.getItem("saveMoviesList")) || [];
       if (arrMovies.length === 0) {
         Promise.all([filmsApi.getMovies(), authApi.getSavedMovies()])
           .then(([dataMovies, dataSavedMovies]) => {
-            localStorage.setItem('moviesList', JSON.stringify(dataMovies));
-            localStorage.setItem('saveMoviesList', JSON.stringify(dataSavedMovies));
-            setMovies(JSON.parse(localStorage.getItem('moviesList')));
-            setSavedMovies(JSON.parse(localStorage.getItem('saveMoviesList')));
+            localStorage.setItem("moviesList", JSON.stringify(dataMovies));
+            localStorage.setItem(
+              "saveMoviesList",
+              JSON.stringify(dataSavedMovies)
+            );
+            setMovies(JSON.parse(localStorage.getItem("moviesList")));
+            setSavedMovies(JSON.parse(localStorage.getItem("saveMoviesList")));
           })
-          .catch((err) => console.log(err, 'Ошибка при получении данных.'));
+          .catch((err) => console.log(err, "Ошибка при получении данных."));
       } else {
         setMovies(arrMovies);
         setSavedMovies(arrSavedMovies);
@@ -103,8 +111,8 @@ function App() {
     setNullRsult(false);
 
     try {
-      const checked = JSON.parse(localStorage.getItem('checkboxState'));
-      const searchQuery = localStorage.getItem('searchQuery');
+      const checked = JSON.parse(localStorage.getItem("checkboxState"));
+      const searchQuery = localStorage.getItem("searchQuery");
 
       if (!searchQuery) {
         setTimeout(() => {
@@ -115,7 +123,10 @@ function App() {
       }
       let dataFilteredMovies = [];
       if (checked && Boolean(searchQuery)) {
-        dataFilteredMovies = await filterMovies(searchQuery, filterTime(movies));
+        dataFilteredMovies = await filterMovies(
+          searchQuery,
+          filterTime(movies)
+        );
       } else if (searchQuery) {
         dataFilteredMovies = await filterMovies(searchQuery, movies);
       }
@@ -125,22 +136,22 @@ function App() {
         setNullRsult(true);
       }
       setLoading(false);
-      return
+      return;
     } catch (e) {
-      console.log(e)
+      console.log(e);
       setError(true);
     }
-  }
+  };
 
   const searchSavedMovies = () => {
     setSaveLoading(true);
     setSaveError(false);
     setSaveNullRequest(false);
-    setSaveNullResult(false)
+    setSaveNullResult(false);
 
     try {
-      const checked = JSON.parse(localStorage.getItem('saveCheckboxState'));
-      const searchQuery = localStorage.getItem('saveSearchQuery');
+      const checked = JSON.parse(localStorage.getItem("saveCheckboxState"));
+      const searchQuery = localStorage.getItem("saveSearchQuery");
 
       if (!searchQuery && !checked) {
         setTimeout(() => {
@@ -166,48 +177,59 @@ function App() {
 
       setSaveLoading(false);
       return;
-
     } catch (err) {
       setSaveLoading(false);
       setSaveError(true);
-      console.log(err, 'ошибка при поиске в сохраненках')
+      console.log(err, "ошибка при поиске в сохраненках");
     }
-  }
+  };
 
   function addMovie(data) {
-    authApi.createMovie(data)
+    authApi
+      .createMovie(data)
       .then((newMovie) => {
-        const moviesList = JSON.parse(localStorage.getItem('saveMoviesList'));
-        localStorage.setItem('saveMoviesList', JSON.stringify([newMovie, ...moviesList]));
+        const moviesList = JSON.parse(localStorage.getItem("saveMoviesList"));
+        localStorage.setItem(
+          "saveMoviesList",
+          JSON.stringify([newMovie, ...moviesList])
+        );
       })
-      .catch((err) => console.log(err, 'не удалось создать карточку'));
+      .catch((err) => console.log(err, "не удалось создать карточку"));
   }
 
   function deleteMovie(card) {
-    authApi.deleteMovie(card._id)
+    authApi
+      .deleteMovie(card._id)
       .then(() => {
-        const del = JSON.parse(localStorage.getItem('saveMoviesList'));
+        const del = JSON.parse(localStorage.getItem("saveMoviesList"));
         const updateSavedMovies = del.filter((i) => i._id !== card._id);
-        const filteredUpdateSavedMovies = filteredSavedMovies.filter((i) => i._id !== card._id);
+        const filteredUpdateSavedMovies = filteredSavedMovies.filter(
+          (i) => i._id !== card._id
+        );
         setSavedMovies(updateSavedMovies);
         setFilteredSavedMovies(filteredUpdateSavedMovies);
-        localStorage.setItem('saveMoviesList', JSON.stringify(updateSavedMovies));
+        localStorage.setItem(
+          "saveMoviesList",
+          JSON.stringify(updateSavedMovies)
+        );
       })
       .catch((err) => console.log(err));
   }
 
   function handleCreateUser({ name, email, password }) {
-    authApi.register(name, email, password)
+    authApi
+      .register(name, email, password)
       .then(() => {
         handleAuthorization({ email, password });
       })
       .catch((err) => {
         setErrorCreateUser(err);
-      })
+      });
   }
 
   function handleAuthorization({ email, password }) {
-    authApi.authorize(email, password)
+    authApi
+      .authorize(email, password)
       .then(() => {
         setLoggedIn(true);
       })
@@ -217,9 +239,10 @@ function App() {
   }
 
   function handleUpdateUser({ name, email }) {
-    authApi.editDataUser(email, name)
-      .then(res => {
-        setMessageOk('Данные профиля успешно изменены.');
+    authApi
+      .editDataUser(email, name)
+      .then((res) => {
+        setMessageOk("Данные профиля успешно изменены.");
         setCurrentUser({ name: res.name, email: res.email });
       })
       .catch((err) => {
@@ -228,46 +251,48 @@ function App() {
   }
 
   function tokenCheck() {
-    authApi.checkToken()
+    authApi
+      .checkToken()
       .then((res) => {
         if (res) {
-          setCurrentUser({ name: res.name, email: res.email, id: res._id })
+          setCurrentUser({ name: res.name, email: res.email, id: res._id });
           setLoggedIn(true);
-          localStorage.setItem('loggedIn', res._id)
+          localStorage.setItem("loggedIn", res._id);
         }
       })
       .catch((err) => {
-        console.log(err, "Не удалось авторизировать пользователя.")
-        signOut()
+        console.log(err, "Не удалось авторизировать пользователя.");
+        signOut();
       });
   }
 
   useEffect(() => {
     tokenCheck();
-  }, [loggedIn])
+  }, [loggedIn]);
 
   function signOut() {
-    authApi.signOut()
+    authApi
+      .signOut()
       .then(() => {
         setSavedMovies([]);
         setMovies([]);
-        setCurrentUser({})
-        localStorage.removeItem('moviesList');
-        localStorage.removeItem('saveMoviesList');
+        setCurrentUser({});
+        localStorage.removeItem("moviesList");
+        localStorage.removeItem("saveMoviesList");
 
-        localStorage.removeItem('searchQuery');
-        localStorage.removeItem('checkboxState');
+        localStorage.removeItem("searchQuery");
+        localStorage.removeItem("checkboxState");
 
-        localStorage.removeItem('saveSearchQuery');
-        localStorage.removeItem('saveCheckboxState');
+        localStorage.removeItem("saveSearchQuery");
+        localStorage.removeItem("saveCheckboxState");
 
-        localStorage.removeItem('path');
-        localStorage.removeItem('loggedIn');
+        localStorage.removeItem("path");
+        localStorage.removeItem("loggedIn");
 
-        setLoggedIn(false)
-        navigate('/');
+        setLoggedIn(false);
+        navigate("/");
       })
-      .catch((err) => console.log('Ошибка при выходе', err));
+      .catch((err) => console.log("Ошибка при выходе", err));
   }
 
   function handleStripesClick() {
