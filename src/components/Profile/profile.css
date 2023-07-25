@@ -74,12 +74,17 @@
   outline: 1px solid #3b6ec7;
 }
 
+.profile__input_outline {
+  outline: 1px solid #3b6ec7;
+}
+
 .profile__link-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 203px;
   padding-right: 22px;
+  position: relative;
 }
 
 .profile__link {
@@ -135,6 +140,12 @@
   font-size: 10px;
   line-height: 12px;
   color: #ee3465;
+}
+
+.profile__error_positive {
+  color: #41ef6d;
+  position: absolute;
+  bottom: 70px;
 }
 
 .profile__hidden {

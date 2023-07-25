@@ -1,10 +1,42 @@
-import React from "react";
+import { React, useState } from "react";
 import logo from "../../images/logo.svg";
 import "../Form/form.css";
 import { Link } from "react-router-dom";
 
-function Register() {
-  function handleInput(e) {}
+function Register({ errorCreateUser, resetError, onCreateUser }) {
+  const [errorMessage, setErrorMessage] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  const [isValid, setIsValid] = useState(false);
+
+  function handleInput(e) {
+    resetError();
+    const { name, value, validationMessage, form } = e.target;
+    const passwordInput = document.getElementById("password");
+    setFormData({ ...formData, [name]: value });
+    setErrorMessage({ ...errorMessage, [name]: validationMessage });
+    setIsValid(form.checkValidity());
+    if (passwordInput.checkValidity()) {
+      passwordInput.classList.remove("form__input_password");
+    } else {
+      passwordInput.classList.add("form__input_password");
+    }
+  }
+  
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    onCreateUser(formData);
+  }
 
   return (
     <main className="form">
@@ -17,7 +49,11 @@ function Register() {
           />
         </Link>
         <h1 className="form__salute">Добро пожаловать!</h1>
-        <form className="form__form" name="registration">
+        <form
+          className="form__form"
+          name="registration"
+          onSubmit={handleFormSubmit}
+        >
           <ul className="form__label-container">
             <li>
               <p className="form__header">Имя</p>
@@ -31,10 +67,10 @@ function Register() {
                   minLength="2"
                   maxLength="20"
                   required
-                  value="Виталий"
+                  value={formData.name}
                   placeholder="Имя"
                 />
-                <span className="form__error"></span>
+                <span className="form__error">{errorMessage.name}</span>
               </label>
             </li>
 
@@ -49,10 +85,11 @@ function Register() {
                   type="email"
                   minLength="2"
                   required
-                  value="pochta@yandex.ru"
+                  value={formData.email}
                   placeholder="E-mail"
+                  pattern='^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                 />
-                <span className="form__error"></span>
+                <span className="form__error">{errorMessage.email}</span>
               </label>
             </li>
 
@@ -61,24 +98,28 @@ function Register() {
               <label className="form__label">
                 <input
                   onChange={handleInput}
-                  className="form__input form__input_password"
+                  className={`form__input`}
                   id="password"
                   name="password"
                   type="password"
                   minLength="2"
                   maxLength="30"
                   required
-                  value="••••••••••••••"
+                  value={formData.password}
                   placeholder="Пароль"
                 />
-                <span className="form__error">Что-то пошло не так...</span>
+                <span className="form__error">{errorMessage.password}</span>
               </label>
             </li>
           </ul>
+          <span className="form__error">{errorCreateUser}</span>
           <button
-            className="form__button"
+            className={`form__button ${
+              !isValid || errorCreateUser ? "form__button_disabled" : ""
+            }`}
             type="submit"
             aria-label="Кнопка сохранить"
+            disabled={!isValid || errorCreateUser}
           >
             Зарегистрироваться
           </button>

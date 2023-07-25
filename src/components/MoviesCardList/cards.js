@@ -1,89 +1,79 @@
-import React from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import MoviesCard from "../MoviesCard/card";
 import "./cards.css";
+import {
+  WINDOW__SIZE_DESKTOP,
+  WINDOW__SIZE_TABLET,
+  MOVIES_ROW_DESKTOP,
+  MOVIES_ROW_TABLET,
+  MOVIES_ROW_MOBILE,
+  MOVIES_LINE_DESKTOP,
+  MOVIES_LINE_MOBILE,
+} from "../../constants/Constants";
 
-function MoviesCardList({ state }) {
+function MoviesCardList({ state, filteredMovies, addMovie, deleteMovie, type }) {
+  const [size, setSize] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
+  const [showMore, setShowMore] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth > WINDOW__SIZE_DESKTOP) {
+        setSize(MOVIES_LINE_DESKTOP);
+        setStartIndex(MOVIES_ROW_DESKTOP);
+      } else if (window.innerWidth > WINDOW__SIZE_TABLET) {
+        setSize(MOVIES_LINE_MOBILE);
+        setStartIndex(MOVIES_ROW_TABLET);
+      } else {
+        setSize(MOVIES_LINE_MOBILE);
+        setStartIndex(MOVIES_ROW_MOBILE);
+      }
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    handleShowMore();
+  }, [startIndex, filteredMovies])
+
+  function handleShowMore() {
+    if (filteredMovies.length > startIndex + size) {
+      setShowMore(true);
+    } else {
+      setShowMore(false);
+    }
+  }
+
+  function handleClick() {
+    setStartIndex(startIndex + size);
+    handleShowMore()
+  }
+
+  const moviesElements = filteredMovies.slice(0, showMore ? startIndex : filteredMovies.length).map((card) => (
+
+    < MoviesCard
+      state={state}
+      addMovie={addMovie}
+      deleteMovie={deleteMovie}
+      key={card.id}
+      card={card}
+      type={type}
+    />
+  ))
+
   return (
     <section className="cards">
-      {/* <h3 className="cards__empty">Фильмы отсутствуют</h3> */}
       <ul className="cards__list">
-        <MoviesCard
-          isActive={true}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={false}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={false}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={false}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={false}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={true}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={false}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={false}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={true}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={true}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={false}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
-        <MoviesCard
-          isActive={false}
-          state={state}
-          filmName="33 слова о дизайне"
-          filmLink="https://www.youtube.com/watch?v=5ovzC93EneA"
-        />
+        {moviesElements}
       </ul>
-      <button type="button" className={`cards__more ${state? '' : 'cards__hidden'}`}>
+      <button
+        className={`cards__more ${showMore ? "" : "cards__hidden"}`}
+        onClick={handleClick}
+      >
         Ещё
       </button>
-      {state? '' : <div className="cards__margin"/>}
     </section>
   );
 }

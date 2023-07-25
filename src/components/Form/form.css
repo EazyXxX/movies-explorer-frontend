@@ -87,6 +87,10 @@
   font-size: 10px;
   line-height: 12px;
   color: #ee3465;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  display: flex;
 }
 
 .form__button {
@@ -112,6 +116,10 @@
 
 .form__button:active {
   background-color: #3b6ec7;
+}
+
+.form__button_disabled {
+  background-color: #8b8b8b;
 }
 
 .form__span {

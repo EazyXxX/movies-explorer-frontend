@@ -12,3 +12,5 @@ Frontend: https://eazy.movies-explorer.nomoredomains.rocks
 Backend: https://api.eazy.movies-explorer.nomoredomains.rocks
 
 Ссылка на макет Figma: https://mega.nz/folder/YLdXFK5Q#bRcQGnA7F5_dY4C0T25kyQ
+
+Ссылка на pull request: https://github.com/EazyXxX/movies-explorer-frontend/pull/2

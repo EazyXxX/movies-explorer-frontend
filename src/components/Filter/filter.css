@@ -10,6 +10,7 @@
   margin-right: 70px;
   margin-bottom: 75px;
   display: flex;
+  position: relative;
 }
 
 .filter__box {
@@ -71,6 +72,10 @@
   background-color: #3b6ec7;
 }
 
+.filter__button_disabled {
+  background-color: grey;
+}
+
 .filter__moniker {
   color: white;
   font-weight: 100;
@@ -81,6 +86,16 @@
   line-height: 18px;
   margin-left: 41px;
   align-self: center;
+}
+
+.filter__error {
+  color: #ff3c70;
+  font-weight: 100;
+  font-size: 13px;
+  line-height: 18px;
+  position: absolute;
+  bottom: 56px;
+  left: 26px;
 }
 
 .filter__switch-box {
@@ -139,11 +154,17 @@
   bottom: 1px;
 }
 
-.filter__checkbox-input:checked + .filter__slider:before {
+.filter__checkbox-input_checked + .filter__slider:before {
   -webkit-transform: translateX(15px);
   -ms-transform: translateX(15px);
   transform: translateX(15px);
-  background-color: #2BE080;
+  background-color: #2be080;
+}
+
+.filter__checked {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
 }
 
 @media screen and (max-width: 1279px) {
@@ -198,6 +219,11 @@
 
   .filter__box {
     height: 46px;
+  }
+
+  .filter__error {
+    bottom: 90px;
+    left: 248px;
   }
 }
 
@@ -255,5 +281,10 @@
     font-size: 11px;
     margin-left: 42px;
     margin-top: 0;
+  }
+
+  .filter__error {
+    bottom: -30px;
+    left: 46px;
   }
 }

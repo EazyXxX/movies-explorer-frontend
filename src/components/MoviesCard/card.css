@@ -52,7 +52,7 @@
 
 .card__image {
   width: 364px;
-  max-height: 203px;
+  height: 203px;
   border-radius: 3% 3% 0 0;
   object-fit: cover;
 }
@@ -64,7 +64,6 @@
 .card:hover .card__cross {
   visibility: visible;
 }
-
 
 @media screen and (max-width: 1279px) {
   .card {
@@ -90,6 +89,10 @@
 
   .card__timing {
     margin-top: 9px;
+  }
+
+  .card__cross {
+    visibility: visible;
   }
 }
 
