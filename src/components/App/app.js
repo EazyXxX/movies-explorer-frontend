@@ -36,7 +36,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [nullRequest, setNullRequest] = useState(false);
-  const [nullResult, setNullRsult] = useState(false);
+  const [nullResult, setNullResult] = useState(false);
 
   const [saveLoading, setSaveLoading] = useState(false);
   const [saveError, setSaveError] = useState(false);
@@ -96,7 +96,7 @@ function App() {
             setMovies(JSON.parse(localStorage.getItem("moviesList")));
             setSavedMovies(JSON.parse(localStorage.getItem("saveMoviesList")));
           })
-          .catch((err) => console.log(err, "Ошибка при получении данных."));
+          .catch((err) => console.log(err, "Ошибка при получении данных"));
       } else {
         setMovies(arrMovies);
         setSavedMovies(arrSavedMovies);
@@ -108,7 +108,7 @@ function App() {
     setLoading(true);
     setError(false);
     setNullRequest(false);
-    setNullRsult(false);
+    setNullResult(false);
 
     try {
       const checked = JSON.parse(localStorage.getItem("checkboxState"));
@@ -133,7 +133,7 @@ function App() {
       setFilteredMovies(dataFilteredMovies);
 
       if (dataFilteredMovies.length === 0) {
-        setNullRsult(true);
+        setNullResult(true);
       }
       setLoading(false);
       return;
@@ -180,7 +180,7 @@ function App() {
     } catch (err) {
       setSaveLoading(false);
       setSaveError(true);
-      console.log(err, "ошибка при поиске в сохраненках");
+      console.log(err, "Ошибка при поиске в сохранённых фильмах");
     }
   };
 
@@ -194,7 +194,7 @@ function App() {
           JSON.stringify([newMovie, ...moviesList])
         );
       })
-      .catch((err) => console.log(err, "не удалось создать карточку"));
+      .catch((err) => console.log(err, "Не удалось создать карточку"));
   }
 
   function deleteMovie(card) {
@@ -242,7 +242,7 @@ function App() {
     authApi
       .editDataUser(email, name)
       .then((res) => {
-        setMessageOk("Данные профиля успешно изменены.");
+        setMessageOk("Данные профиля успешно изменены");
         setCurrentUser({ name: res.name, email: res.email });
       })
       .catch((err) => {
@@ -261,8 +261,8 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(err, "Не удалось авторизировать пользователя.");
-        signOut();
+        logOut();
+        console.log(err, "Не удалось авторизовать пользователя");
       });
   }
 
@@ -270,27 +270,27 @@ function App() {
     tokenCheck();
   }, [loggedIn]);
 
+  function logOut() {
+    setSavedMovies([]);
+    setMovies([]);
+    setCurrentUser({});
+    localStorage.removeItem("moviesList");
+    localStorage.removeItem("saveMoviesList");
+    localStorage.removeItem("searchQuery");
+    localStorage.removeItem("checkboxState");
+    localStorage.removeItem("saveSearchQuery");
+    localStorage.removeItem("saveCheckboxState");
+    localStorage.removeItem("path");
+    localStorage.removeItem("loggedIn");
+    setLoggedIn(false);
+    navigate("/");
+  }
+
   function signOut() {
     authApi
       .signOut()
       .then(() => {
-        setSavedMovies([]);
-        setMovies([]);
-        setCurrentUser({});
-        localStorage.removeItem("moviesList");
-        localStorage.removeItem("saveMoviesList");
-
-        localStorage.removeItem("searchQuery");
-        localStorage.removeItem("checkboxState");
-
-        localStorage.removeItem("saveSearchQuery");
-        localStorage.removeItem("saveCheckboxState");
-
-        localStorage.removeItem("path");
-        localStorage.removeItem("loggedIn");
-
-        setLoggedIn(false);
-        navigate("/");
+        logOut();
       })
       .catch((err) => console.log("Ошибка при выходе", err));
   }

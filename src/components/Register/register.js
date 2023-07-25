@@ -69,7 +69,6 @@ function Register({ errorCreateUser, resetError, onCreateUser }) {
                   required
                   value={formData.name}
                   placeholder="Имя"
-                  pattern='[a-zA-Zа-яА-Я-\s]*'
                 />
                 <span className="form__error">{errorMessage.name}</span>
               </label>
