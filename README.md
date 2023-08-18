@@ -1,9 +1,8 @@
 # Movies-explorer frontend
-Repository for the graduation project, including the front-end part of the Movies-explorer application.
 
-Diploma project of Yandex Practicum: "Movies-explorer".
+This is the Yandex Practicum graduation project: "Movies-explorer"
 
-Repository for the application frontend: Video service, with the following features:
+This very repository contains a frontend application - video service, with the following features:
 
      authorization and registration of users,
 
