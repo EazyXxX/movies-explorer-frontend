@@ -20,6 +20,6 @@ Technological features of the Movies-explorer project:
 
      React functional components and states, HOC (higher order components), custom hooks, 
 
-Tools and stack: HTML, CSS, JavaScript, React
+Tools and stack: HTML, CSS, JavaScript, React, NodeJS, Express;
 
 Figma project layout: https://drive.google.com/drive/folders/1a1uKOC1tS08nowH59ar604XECRXdGIfS?usp=sharing 
