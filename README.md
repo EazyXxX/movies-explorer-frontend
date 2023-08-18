@@ -2,13 +2,13 @@
 
 This is the Yandex Practicum graduation project: "Movies-explorer"
 
-This very repository contains a frontend application - video service, with the following features:
+This very repository contains a frontend application - video service, with the following functonal features:
 
-     authorization and registration of users,
+     Authorization and registration of users;
 
-     user data update,
+     User data update;
 
-     operations with movie cards.
+     Operations with movies cards.
 
 Technological features of the Movies-explorer project: 
 
