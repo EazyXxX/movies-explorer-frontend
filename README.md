@@ -22,6 +22,8 @@ Technological features of the Movies-explorer project:
 
 Tools and stack: HTML, CSS, JavaScript, React, NodeJS, Express;
 
+If you don't speak Russian, please, translate this project via [Google Translate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb?hl=ru) browser extension. 
+
 Movies-explorer actual link: https://eazy.movies-explorer.nomoredomains.rocks/
 
 Figma project layout: https://drive.google.com/drive/folders/1a1uKOC1tS08nowH59ar604XECRXdGIfS?usp=sharing 
